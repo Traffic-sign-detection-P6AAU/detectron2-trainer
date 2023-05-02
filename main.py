@@ -1,4 +1,4 @@
-from trainer.testing import prepare_dataset, train, evaluate
+from trainer.trainer import prepare_dataset, train, evaluate
 from detectron2.config import get_cfg
 
 CATEGORIES_PATH = 'data_handler/categories.json'
@@ -15,10 +15,6 @@ def main():
         evaluate(cfg)
     elif choice == '2':
         evaluate(cfg)
-    # elif choice == '3':
-    #     split_dataset(CATEGORIES_PATH)
-    # elif choice == '4':
-    #     extend_annotations()
     else:
         print('Input was not 1, 2, 3 or 4.')
 
