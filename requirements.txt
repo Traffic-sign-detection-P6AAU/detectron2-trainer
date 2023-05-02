@@ -1,4 +1,6 @@
 #Installation command: pip install --no-cache-dir --upgrade -r requirements.txt
+# RUN BEFORE:
+#git clone https://github.com/facebookresearch/detectron2.git
 opencv-python
 detectron2
 roboflow
