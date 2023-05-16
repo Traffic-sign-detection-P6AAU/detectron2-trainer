@@ -34,10 +34,10 @@ def train(cfg):
     cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url('COCO-Detection/faster_rcnn_R_50_FPN_1x.yaml')  # Let training initialize from model zoo
     cfg.SOLVER.IMS_PER_BATCH = 2  # This is the real 'batch size' commonly known to deep learning people
     cfg.SOLVER.BASE_LR = 0.005 # pick a good LR
-    cfg.SOLVER.MAX_ITER = 43000    # 300 iterations seems good enough for this toy dataset; you will need to train longer for a practical dataset
-    cfg.SOLVER.STEPS = []        # do not decay learning rate
-    cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 64 # The 'RoIHead batch size'. 128 is faster, and good enough for this toy dataset (default: 512)
-    cfg.MODEL.ROI_HEADS.NUM_CLASSES = 20  # only has one class (ballon). (see https://detectron2.readthedocs.io/tutorials/datasets.html#update-the-config-for-new-datasets)
+    cfg.SOLVER.MAX_ITER = 43000
+    cfg.SOLVER.STEPS = [] # do not decay learning rate
+    cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 64 # The 'RoIHead batch size' (default: 512)
+    cfg.MODEL.ROI_HEADS.NUM_CLASSES = 20
     # NOTE: this config means the number of classes, but a few popular unofficial tutorials incorrect uses num_classes+1 here.
 
     os.makedirs(cfg.OUTPUT_DIR, exist_ok=True)
@@ -46,7 +46,7 @@ def train(cfg):
     trainer.train()
 
 def evaluate(cfg):
-    #register_coco_instances('my_dataset_val1', {}, dataset_path+'valid/_annotations.coco.json', dataset_path+'/valid')
+    #register_coco_instances('my_dataset_val1', {}, dataset_path+'valid/_annotations.coco.json', dataset_path+'/valid') # remove comment if you want run only evaluation and not training
     cfg.MODEL.WEIGHTS = os.path.join(cfg.OUTPUT_DIR, 'model_final.pth')  # path to the model we trained
     cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5   # set a testing threshold
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = 20
