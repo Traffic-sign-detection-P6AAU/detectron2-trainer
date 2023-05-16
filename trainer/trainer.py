@@ -17,6 +17,7 @@ from detectron2.data import build_detection_test_loader
 dataset_path = '/home/ubuntu/detectron2-trainer/speed-signs-for-dk-4/'
 
 def prepare_dataset():
+    # TO DOWNLOAD DATASET
     #if not os.path.isdir('speed-signs-for-dk-4'):
         #rf = Roboflow(api_key='ay1GyW7t9J2m3JLcZIul')
         #project = rf.workspace('university-wtl9y').project('speed-signs-for-dk')
